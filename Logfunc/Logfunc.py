@@ -5,26 +5,33 @@ __author__ = "DLI"
 # Elternklasse
 class LogFunc:
     def __init__(self):
-        # _ = Protected
         # Attribute definieren
-        self._Input0 = False
-        self._Input1 = False
+        # __ = Private
+        self.__Input0 = False
+        self.__Input1 = False
+        self.__Name = ""
+        # _ Protected
         self._Output = False
-        self._Name = ""
 
     def show(self):
         print(str(self))
 
     def set_input(self, Input0, Input1, Name):
-        self._Input0 = Input0
-        self._Input1 = Input1
-        self._Name = Name
+        self.__Input0 = Input0
+        self.__Input1 = Input1
+        self.__Name = Name
 
-    def get_input(self):
+    def get_input0(self):
+        return self.__Input0
+
+    def get_input1(self):
+        return self.__Input1
+
+    def get_output(self):
         return self._Output
 
     def get_name(self):
-        return self._Name
+        return self.__Name
 
     def __str__(self):
         str = "Ergibt Falsch"
@@ -37,20 +44,28 @@ class LogFunc:
 class AndGate(LogFunc):
     def execute(self):
         self._Output = False
-        if self._Input1 == self._Input0:
-            if True == self._Input0:
+        if self.get_input1() == self.get_input0():
+            if True == self.get_input0():
                 self._Output = True
 
 # Kindklasse für OR-Gate
 class OrGate(LogFunc):
     def execute(self):
         self._Output = False
-        if self._Input0 == True:
+        if self.get_input0() == True:
             self._Output = True
-        if self._Input1 == True:
+        if self.get_input1() == True:
             self._Output = True
 
 # Kindklasse für XOR-Gate
 class XOrGate(LogFunc):
     def execute(self):
-        self._Output = self._Input0 != self._Input1
+        self._Output = self.get_input0() != self.get_input1()
+
+# Kindklasse für NAND-Gate
+class NAndGate(LogFunc):
+    def execute(self):
+        self._Output = True
+        if self.get_input1() == self.get_input0():
+            if True == self.get_input0():
+                self._Output = False
