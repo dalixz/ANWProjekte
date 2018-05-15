@@ -12,6 +12,8 @@ class LogFunc:
         self.__Name = ""
         # _ Protected
         self._Output = False
+        #Initialisierung der Ausgangswerte
+        self.execute()
 
     def show(self):
         print(str(self))
@@ -39,6 +41,9 @@ class LogFunc:
             str = "Ergibt Richtig"
 
         return str
+
+    def execute(self):
+        pass #nur für intellisense
 
 # Kindklasse für AND-Gate
 class AndGate(LogFunc):

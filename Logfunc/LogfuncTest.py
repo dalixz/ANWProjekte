@@ -80,6 +80,10 @@ class NAndGateTest(unittest.TestCase):
         else:
             self.assertFalse(a.get_output(), "Class NAndGate: " + test_id + " failed")
 
+    def testcase_00(self):
+        a = NAndGate()
+        self.assertTrue(a.get_output(), "Automatische initialisierung über virtuelle Methode")
+
     def testcase_01(self):
         self.assert_test_case(False, False, True, "Test 1")
 
