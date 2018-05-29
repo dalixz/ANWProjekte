@@ -1,9 +1,12 @@
+#Libs
+from abc import ABC, abstractmethod
+
 # Verwaltungsinfos
 __version__ = "1.0"
 __author__ = "DLI"
 
 # Elternklasse
-class LogFunc:
+class LogFunc(ABC):
     def __init__(self):
         # Attribute definieren
         # __ = Private
@@ -42,6 +45,7 @@ class LogFunc:
 
         return str
 
+    @abstractmethod
     def execute(self):
         pass #nur für intellisense
 

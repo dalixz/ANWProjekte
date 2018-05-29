@@ -1,5 +1,8 @@
 import Logfunc
 
+#test exception
+bla = Logfunc.LogFunc()
+
 test_and_gate = Logfunc.AndGate()
 
 test_and_gate.__Input0 = True
