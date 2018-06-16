@@ -1,14 +1,10 @@
 import Logfunc
 
-#test exception
-bla = Logfunc.LogFunc()
+test_and_gate = Logfunc.XOrGate()
 
-test_and_gate = Logfunc.AndGate()
-
-test_and_gate.__Input0 = True
-test_and_gate.__Input1 = True
+test_and_gate.set_inputs([False, True])
 
 test_and_gate.execute()
 #test_and_gate.show()
 
-print(test_and_gate)
+print(test_and_gate.get_output_at(0))
