@@ -11,7 +11,7 @@ class EightBitAdder(LogFunc):
         if len(binary_a) is not 8:
             raise ValueError("Invalid Bit length! binary_a")
         if len(binary_b) is not 8:
-            raise ValueError("Invalid Bit length! binary_a")
+            raise ValueError("Invalid Bit length! binary_b")
 
         #type check
         if type(carry) is not bool:
@@ -46,7 +46,7 @@ class EightBitAdder(LogFunc):
         inputs_a = self._Inputs[1:9]
         inputs_b = self._Inputs[9:18]
 
-        half_adder_sums = []
+        full_adder_sums = []
 
         #Rückwärts durch Inputs iterieren
         for x in reversed(range(0, 8)):
@@ -56,10 +56,10 @@ class EightBitAdder(LogFunc):
             #Übertrag für nächsten FullAdder speichern
             last_carry = fa.get_output_carry()
             #Summe am Anfang (index 0) der Ergebnisliste speichern
-            half_adder_sums.insert(0, fa.get_output_sum())
+            full_adder_sums.insert(0, fa.get_output_sum())
 
 
-        self._Outputs = [last_carry] + half_adder_sums
+        self._Outputs = [last_carry] + full_adder_sums
 
 
 
